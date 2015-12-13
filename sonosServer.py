@@ -15,9 +15,9 @@ import sonos_helper
 app = Flask(__name__)
 
 zone_wohnzimmer = sonos_helper.get_speaker("Wohnzimmer")
-print zone_wohnzimmer.player_name
-print zone_wohnzimmer.play_mode
-print zone_wohnzimmer.ip_address
+print "Started for player: %s" % zone_wohnzimmer.player_name
+print "Play mode: %s" % zone_wohnzimmer.play_mode
+print "Player's IP: %s" % zone_wohnzimmer.ip_address
 #print zone_wohnzimmer.volume
 #print zone_wohnzimmer.get_current_track_info()
 #print zone_wohnzimmer.get_current_transport_info()
