@@ -101,6 +101,12 @@ def ircode(code):
     return ""
 
 
+@app.route('/rawcode/<IRcode>')
+def rawIDcode(IRcode):
+    print("RawCode query: IRcode is %s" % IRcode)
+    return ""
+
+
 @app.route('/chose/<zonename>')
 def chose(zonename):
     zone_wohnzimmer = sonos_helper.get_speaker(zonename)
