@@ -1,6 +1,7 @@
 __author__ = 'mike'
 
-from soco import discover
+#from soco import discover
+import soco
 
 meta_template = '<DIDL-Lite xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/" xmlns:r="urn:schemas-rinconnetworks-com:metadata-1-0/" xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/"><item id="R:0/0/0" parentID="R:0/0" restricted="true"><dc:title>{title}</dc:title><upnp:class>object.item.audioItem.audioBroadcast</upnp:class><desc id="cdudn" nameSpace="urn:schemas-rinconnetworks-com:metadata-1-0/">{service}</desc></item></DIDL-Lite>'
 tunein_service = 'SA_RINCON65031_'
@@ -21,7 +22,7 @@ def adjust_volume(zone, factor):
 
 def get_speaker(room_name):
     """ looks for the Zone with the given name (argument) """
-    for zones in discover():
+    for zones in soco.discover():
         if zones.player_name == room_name:
             return zones
 
