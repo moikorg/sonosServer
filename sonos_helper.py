@@ -22,7 +22,7 @@ def adjust_volume(zone, factor):
 
 def get_speaker(room_name):
     """ looks for the Zone with the given name (argument) """
-    for zones in soco.discovery.discover()
+    for zones in soco.discover():
         if zones.player_name == room_name:
             return zones
 
