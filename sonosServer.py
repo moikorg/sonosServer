@@ -9,7 +9,7 @@ from flask import Flask
 # import time
 # import re
 
-import sonos_helper
+#import sonos_helper
 
 meta_template = '<DIDL-Lite xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/" xmlns:r="urn:schemas-rinconnetworks-com:metadata-1-0/" xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/"><item id="R:0/0/0" parentID="R:0/0" restricted="true"><dc:title>{title}</dc:title><upnp:class>object.item.audioItem.audioBroadcast</upnp:class><desc id="cdudn" nameSpace="urn:schemas-rinconnetworks-com:metadata-1-0/">{service}</desc></item></DIDL-Lite>'
 tunein_service = 'SA_RINCON65031_'
@@ -55,7 +55,7 @@ def play_favorite_station(zone, station2play):
 
 app = Flask(__name__)
 
-zone_wohnzimmer = sonos_helper.get_speaker("Wohnzimmer")
+zone_wohnzimmer = get_speaker("Wohnzimmer")
 print("Started for player: %s" % zone_wohnzimmer.player_name)
 print("Play mode: %s" % zone_wohnzimmer.play_mode)
 print("Player's IP: %s" % zone_wohnzimmer.ip_address)
@@ -96,7 +96,7 @@ def ircode(code):
     else:
         station = "Freiburg"
     print("Got IR code %s, playing %s" % (code, station))
-    sonos_helper.play_favorite_station(zone_wohnzimmer, station)
+    play_favorite_station(zone_wohnzimmer, station)
     zone_wohnzimmer.play()
     return ""
 
@@ -109,14 +109,14 @@ def rawIDcode(IRcode):
 
 @app.route('/chose/<zonename>')
 def chose(zonename):
-    zone_wohnzimmer = sonos_helper.get_speaker(zonename)
+    zone_wohnzimmer = get_speaker(zonename)
     print("%s chosen..." % zonename)
     return ""
 
 
 @app.route('/discover/<zonename>')
 def discover(zonename):
-    return sonos_helper.get_speaker(zonename).ip_address
+    return get_speaker(zonename).ip_address
 
 
 @app.route('/volUp/')
@@ -125,7 +125,7 @@ def vol_up():
         factor = 4
     else:
         factor = 6
-    sonos_helper.adjust_volume(zone_wohnzimmer, factor)
+    adjust_volume(zone_wohnzimmer, factor)
     return "Volume: %s" % zone_wohnzimmer.volume
 
 
@@ -135,7 +135,7 @@ def vol_down():
         factor = -4
     else:
         factor = -6
-    sonos_helper.adjust_volume(zone_wohnzimmer, factor)
+    adjust_volume(zone_wohnzimmer, factor)
     return "Volume: %s" % zone_wohnzimmer.volume
 
 
