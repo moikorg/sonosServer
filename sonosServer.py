@@ -72,7 +72,7 @@ print("start web server")
 
 @app.route('/')
 def hello_world():
-    return 'Hello Worlddddd! This is the sonosAPI server'
+    return 'Hello World!<br>This is the Sonos-Server API address'
 
 
 @app.route('/ircode/<code>')
