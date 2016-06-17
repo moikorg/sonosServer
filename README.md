@@ -13,6 +13,7 @@ The following queries are possible:
 * ./volDown
 * ./stop
 * ./playpause
+* ./rawcode/<IRcode>
 
 
 This tool is very basic and completely designed for my requirements, which are:

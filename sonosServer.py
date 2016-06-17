@@ -72,7 +72,7 @@ print("start web server")
 
 @app.route('/')
 def hello_world():
-    return 'Hello Worlddddd!'
+    return 'Hello Worlddddd! This is the sonosAPI server'
 
 
 @app.route('/ircode/<code>')
@@ -106,10 +106,16 @@ def ircode(code):
 @app.route('/rawcode/<IRcode>')
 def rawIDcode(IRcode):
     print("RawCode query: IRcode is %s" % IRcode)
-    if IRcode == 0xE21D:
+    if IRcode == '0xE21D':
         # Toggle the light in the saloon
         print ("Toggle light in the saloon (AntiVol)")
-        #http://raspi-internal:5001/light/toggle
+        auth_url = 'http://raspi-internal.moik.org:5001/light'
+        r = requests.get(auth_url)
+        if r.status_code != 200:
+            print("Error, no connection and authentication possible")
+            print (r.text)
+            return "error: the myStrom API returned an error:<br>%s" % r.text
+
     return ""
 
 
