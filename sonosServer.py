@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import soco
 from flask import Flask
+import requests
+
 
 # from soco import SoCo
 # from soco import discover
@@ -104,6 +106,10 @@ def ircode(code):
 @app.route('/rawcode/<IRcode>')
 def rawIDcode(IRcode):
     print("RawCode query: IRcode is %s" % IRcode)
+    if IRcode == 0xE21D:
+        # Toggle the light in the saloon
+        print ("Toggle light in the saloon (AntiVol)")
+        #http://raspi-internal:5001/light/toggle
     return ""
 
 
