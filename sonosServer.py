@@ -81,7 +81,8 @@ def ircode(code):
         zone_wohnzimmer.switch_to_line_in()
     else:
         if code == '1':
-            station = "Freiburg"
+#            station = "Freiburg"   # is now on line-in
+            station = "Rockit"
         elif code == '2':
             station = "Fribourg"
         elif code == '3':
