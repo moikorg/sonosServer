@@ -77,28 +77,31 @@ def hello_world():
 
 @app.route('/ircode/<code>')
 def ircode(code):
-    if code == '1':
-        station = "Freiburg"
-    elif code == '2':
-        station = "Fribourg"
-    elif code == '3':
-        station = "DRS 3"
-    elif code == '4':
-        station = "SWR3"
-    elif code == '5':
-        station = "The Point"
-    elif code == '6':
-        station = "The Office"
-    elif code == '7':
-        station = "The Rock"
-    elif code == '8':
-        station = "SwissGroove"
-    elif code == '9':
-        station = "Swiss Pop"
+    if code == '0':
+        zone_wohnzimmer.switch_to_line_in()
     else:
-        station = "Freiburg"
-    print("Got IR code %s, playing %s" % (code, station))
-    play_favorite_station(zone_wohnzimmer, station)
+        if code == '1':
+            station = "Freiburg"
+        elif code == '2':
+            station = "Fribourg"
+        elif code == '3':
+            station = "DRS 3"
+        elif code == '4':
+            station = "SWR3"
+        elif code == '5':
+            station = "The Point"
+        elif code == '6':
+            station = "The Office"
+        elif code == '7':
+            station = "The Rock"
+        elif code == '8':
+            station = "SwissGroove"
+        elif code == '9':
+            station = "Swiss Pop"
+        else:
+            station = "Freiburg"
+        print("Got IR code %s, playing %s" % (code, station))
+        play_favorite_station(zone_wohnzimmer, station)
     zone_wohnzimmer.play()
     return ""
 
