@@ -113,7 +113,8 @@ def rawIDcode(IRcode):
     if IRcode == '0xE21D':
         # Toggle the light in the saloon
         print ("Toggle light in the saloon (AntiVol)")
-        auth_url = 'http://raspi-internal.moik.org:5001/light'
+        #auth_url = 'http://raspi-internal.moik.org:5001/light'
+        auth_url = 'http://mystromrestapi.moik.org:5001/light'
         r = requests.get(auth_url)
         if r.status_code != 200:
             print("Error, no connection and authentication possible")
