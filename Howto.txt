@@ -1,0 +1,5 @@
+* to rebuild the image (if something changed)
+docker-compose build
+
+* to run the image
+docker-compose up -d --build
