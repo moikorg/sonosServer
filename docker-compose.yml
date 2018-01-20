@@ -11,4 +11,5 @@ services:
       - ./code:/code
     restart: always
     network_mode: "host"
+    container_name: "sonos_Server"
 
